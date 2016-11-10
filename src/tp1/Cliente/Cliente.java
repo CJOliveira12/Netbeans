@@ -50,8 +50,8 @@ public class Cliente {
 
     }
 
-    public void executa(Cliente mens) throws IOException {
-        this.cliente = mens;
+    public void executa() throws IOException {
+       
         Socket cliente = new Socket(this.host, this.porta);
         System.out.println("O cliente ligou-se ao servidor!");
         
@@ -60,7 +60,7 @@ public class Cliente {
         new Thread(runThread).start();
         
         // lê msgs do teclado e manda pro servidor
-        Scanner teclado = new Scanner(mens.getInputStream()); // inicia a classe para a leitura do texto do teclado.
+        Scanner teclado = new Scanner(cliente.getInputStream()); // inicia a classe para a leitura do texto do teclado.
         PrintStream saida = new PrintStream(cliente.getOutputStream()); // cria um objeto PrintStream que vai receber o socket cliente.
         while (teclado.hasNextLine()) {
             saida.println(teclado.nextLine());
